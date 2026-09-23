@@ -100,9 +100,9 @@ def test_deep_hierarchy():
     
     # Buscar especificamente por arquivos que deveriam estar em subpastas
     problem_files = [
-        "Cópia de Relatórios Agosto 25 ANALISTA FLAVIA.xlsx",
-        "teste2.mp4",
-        "arquivos videoteca.xlsx"
+        "exemplo_relatorio.xlsx",
+        "exemplo_video.mp4",
+        "exemplo_documento.docx"
     ]
     
     print(f"\nProcurando por arquivos que deveriam estar em subpastas...")

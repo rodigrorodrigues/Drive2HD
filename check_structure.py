@@ -4,7 +4,6 @@ Script para verificar a estrutura da pasta de destino
 """
 
 import os
-import glob
 
 def check_directory_structure(path):
     """Verificar estrutura de diretórios"""
@@ -81,5 +80,6 @@ def check_directory_structure(path):
             print(f"  📁 {folder}")
 
 if __name__ == '__main__':
-    path = r"C:\Users\Rodrigo Rodrigues\Documents\testehd"
-    check_directory_structure(path) 
+    import sys
+    target_path = sys.argv[1] if len(sys.argv) > 1 else os.getcwd()
+    check_directory_structure(target_path)

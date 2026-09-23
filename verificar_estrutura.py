@@ -6,9 +6,10 @@ Execute este script para ver como ficaram as pastas
 
 import os
 
-def verificar_estrutura():
+def verificar_estrutura(path=None):
     """Verificar estrutura da pasta de destino"""
-    path = r"C:\Users\Rodrigo Rodrigues\Documents\testehd"
+    if path is None:
+        path = os.getcwd()
     
     print(f"=== VERIFICANDO ESTRUTURA DA PASTA: {path} ===")
     print()
@@ -77,5 +78,6 @@ def verificar_estrutura():
             print(f"   📄 {file}")
 
 if __name__ == '__main__':
-    verificar_estrutura()
-    input("\nPressione Enter para sair...") 
+    import sys
+    target_path = sys.argv[1] if len(sys.argv) > 1 else None
+    verificar_estrutura(target_path)

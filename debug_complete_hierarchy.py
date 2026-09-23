@@ -87,13 +87,13 @@ def test_specific_files():
         print("Falha na autenticação!")
         return
     
-    # IDs dos arquivos que sabemos que estão em subpastas
-    test_ids = [
-        "1SNo-nBdlSQ_k5wqbgxngL5FLQYVmXk8c",  # arquivos videoteca.xlsx
-        "1xLN1MLXK7ApOXXxiDal9AZvKFL-5dJtc",  # teste2.mp4
-        "1B7OaKhRcPg5DF0DujDc8F4GAmbxqxi-W"   # Cópia de Relatórios Agosto 25 ANALISTA FLAVIA.xlsx
-    ]
-    
+    # Defina IDs via variável de ambiente DRIVE2HD_TEST_IDS, separados por vírgula
+    test_ids = [item.strip() for item in os.getenv("DRIVE2HD_TEST_IDS", "").split(",") if item.strip()]
+
+    if not test_ids:
+        print("Nenhum ID informado. Defina DRIVE2HD_TEST_IDS para executar este teste.")
+        return
+
     for file_id in test_ids:
         debug_complete_hierarchy(service, file_id)
 

@@ -53,9 +53,9 @@ def check_current_files():
     
     # Buscar por arquivos específicos
     target_files = [
-        "arquivos videoteca.xlsx",
-        "teste2.mp4", 
-        "Cópia de Relatórios Agosto 25 ANALISTA FLAVIA.xlsx"
+        "exemplo_relatorio.xlsx",
+        "exemplo_video.mp4",
+        "exemplo_documento.docx"
     ]
     
     print(f"\nProcurando por arquivos específicos...")

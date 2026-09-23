@@ -1,155 +1,97 @@
-# Drive2HD - Backup do Google Drive
+# Drive2HD
 
-Uma aplicação moderna para Windows que faz backup do Google Drive mantendo a estrutura de pastas e formato dos arquivos, com funcionalidade de backup incremental para otimizar o processo.
+PT-BR: Aplicação desktop (PySide6) para backup local do Google Drive, com dois modos:
+- `main.py`: integração direta com a API do Google Drive.
+- `main_rclone.py`: integração via Rclone (recomendada para grandes volumes).
 
-## Características
+EN: Desktop app (PySide6) to back up Google Drive locally, with two modes:
+- `main.py`: direct Google Drive API integration.
+- `main_rclone.py`: Rclone-based integration (recommended for large datasets).
 
-- ✅ Interface moderna e intuitiva
-- ✅ Backup incremental (baixa apenas arquivos modificados)
-- ✅ Mantém estrutura de pastas original
-- ✅ Preserva formato dos arquivos
-- ✅ Progresso em tempo real
-- ✅ Log detalhado de atividades
-- ✅ Configurações salvas automaticamente
-- ✅ Possibilidade de parar backup em andamento
+## Funcionalidades / Features
 
-## Pré-requisitos
+- Backup completo e incremental
+- Preservação da estrutura de pastas
+- Interface gráfica com progresso e logs
+- Persistência de configurações locais (`backup_info.json`)
 
-1. **Python 3.8 ou superior**
-2. **Conta Google com Google Drive**
-3. **Arquivo de credenciais do Google Cloud Console**
+## Requisitos / Requirements
 
-## Instalação
+- Python 3.8+
+- Windows (scripts `.bat` incluídos; execução manual em outros sistemas pode funcionar)
+- Conta Google com API do Drive habilitada
+- (Modo Rclone) `rclone` instalado e configurado
 
-### 1. Instalar dependências
+## Instalação / Installation
+
+### Dependências Python
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Configurar credenciais do Google Drive
+Script disponível no repositório:
+- `setup_rclone.bat` (instala dependências Python)
 
-1. Acesse o [Google Cloud Console](https://console.cloud.google.com/)
-2. Crie um novo projeto ou selecione um existente
-3. Ative a API do Google Drive
-4. Crie credenciais OAuth 2.0 para aplicação desktop
-5. Baixe o arquivo JSON das credenciais
-6. Renomeie o arquivo para `credentials.json` e coloque na pasta do projeto
+### Credenciais Google (modo API / `main.py`)
 
-### 3. Executar a aplicação
+1. Crie um projeto no Google Cloud Console.
+2. Habilite Google Drive API.
+3. Gere OAuth Client ID para app desktop.
+4. Salve o arquivo como `credentials.json` na raiz do projeto.
+
+Use `credentials_example.json` apenas como referência de estrutura.
+
+### Configuração Rclone (modo `main_rclone.py`)
+
+1. Instale/configure o Rclone.
+2. Crie um remote (ex.: `gdrive`) com `rclone config`.
+3. Valide com `rclone lsd gdrive:`.
+
+Script auxiliar no repositório:
+- `install.bat` (setup guiado de Rclone no Windows)
+
+## Uso / Usage
+
+### Modo API (Google client)
 
 ```bash
 python main.py
 ```
 
-## Como usar
+ou `run.bat`.
 
-### Primeira execução
+### Modo Rclone
 
-1. **Autenticar**: Clique em "Autenticar Google Drive"
-2. **Selecionar destino**: Escolha a pasta onde salvar o backup
-3. **Escolher tipo**: Selecione "Backup Incremental" (recomendado) ou "Backup Completo"
-4. **Iniciar backup**: Clique em "Iniciar Backup"
-
-### Backup incremental
-
-- Na primeira execução, baixa todos os arquivos
-- Nas execuções subsequentes, baixa apenas arquivos modificados desde o último backup
-- Economiza tempo e banda de internet
-- Mantém registro de todos os backups realizados
-
-### Interface
-
-- **Configurações**: Define pasta de destino e tipo de backup
-- **Controles**: Botões para autenticar, iniciar e parar backup
-- **Progresso**: Barra de progresso e status em tempo real
-- **Log**: Registro detalhado de todas as atividades
-
-## Estrutura de arquivos
-
-```
-Drive2HD/
-├── main.py              # Aplicação principal
-├── requirements.txt     # Dependências Python
-├── README.md           # Este arquivo
-├── credentials.json    # Credenciais do Google (você precisa baixar)
-├── token.json          # Token de autenticação (gerado automaticamente)
-└── backup_info.json    # Informações dos backups (gerado automaticamente)
+```bash
+python main_rclone.py
 ```
 
-## Configuração do Google Cloud Console
+## Configuração local / Local configuration
 
-### Passo a passo detalhado:
+Arquivos gerados localmente (ignorados pelo Git):
+- `credentials.json`
+- `token.json`
+- `backup_info.json`
 
-1. **Acessar Google Cloud Console**
+## Limitações conhecidas / Known limitations
 
-   - Vá para https://console.cloud.google.com/
-   - Faça login com sua conta Google
+- Projeto focado em Windows para fluxos com `.bat`.
+- Scripts utilitários de diagnóstico exigem configuração manual de nomes/IDs de teste.
+- Não há pipeline CI versionado neste repositório até o momento.
 
-2. **Criar projeto**
+## Segurança e privacidade / Security & privacy
 
-   - Clique em "Selecionar projeto" no topo
-   - Clique em "Novo projeto"
-   - Digite um nome (ex: "Drive2HD")
-   - Clique em "Criar"
+- **Nunca** commite `credentials.json` e `token.json`.
+- Revogue tokens no Google Cloud em caso de exposição.
+- Consulte `SECURITY.md` para reporte de vulnerabilidades.
 
-3. **Ativar API do Google Drive**
+## Contribuição / Contributing
 
-   - No menu lateral, vá em "APIs e serviços" > "Biblioteca"
-   - Procure por "Google Drive API"
-   - Clique na API e depois em "Ativar"
+Leia `CONTRIBUTING.md` antes de abrir PRs.
 
-4. **Criar credenciais**
+## Licenciamento / Licensing
 
-   - Vá em "APIs e serviços" > "Credenciais"
-   - Clique em "Criar credenciais" > "ID do cliente OAuth"
-   - Selecione "Aplicativo para computador"
-   - Digite um nome (ex: "Drive2HD Desktop")
-   - Clique em "Criar"
+Este repositório **ainda não possui licença open-source definida**.
 
-5. **Baixar credenciais**
-   - Clique no ID do cliente criado
-   - Clique em "Baixar JSON"
-   - Renomeie o arquivo para `credentials.json`
-   - Coloque na pasta do projeto
-
-## Solução de problemas
-
-### Erro de autenticação
-
-- Verifique se o arquivo `credentials.json` está na pasta do projeto
-- Certifique-se de que a API do Google Drive está ativada
-- Tente deletar o arquivo `token.json` e autenticar novamente
-
-### Erro de permissão
-
-- Verifique se a pasta de destino tem permissões de escrita
-- Execute a aplicação como administrador se necessário
-
-### Backup não inicia
-
-- Verifique se está autenticado no Google Drive
-- Confirme se selecionou uma pasta de destino
-- Verifique a conexão com a internet
-
-## Recursos técnicos
-
-- **Interface**: PySide6 com design moderno
-- **API Google**: Google Drive API v3
-- **Autenticação**: OAuth 2.0
-- **Backup incremental**: Baseado em timestamp de modificação
-- **Threading**: Operações de backup em thread separada
-- **Persistência**: Configurações salvas em JSON
-
-## Licença
-
-Este projeto é de código aberto e pode ser usado livremente.
-
-## Suporte
-
-Para dúvidas ou problemas:
-
-1. Verifique se seguiu todos os passos de configuração
-2. Consulte o log de atividades na aplicação
-3. Verifique se as credenciais estão corretas
-4. Teste com uma pasta pequena primeiro
+Até a definição explícita de uma licença pelo proprietário, todos os direitos permanecem reservados por padrão. Veja `LICENSE_STATUS.md`.

@@ -116,7 +116,7 @@ def main():
         return
     
     # Testar o arquivo problemático
-    test_file_hierarchy(service, "Cópia de Relatórios Agosto 25 ANALISTA FLAVIA.xlsx")
+    test_file_hierarchy(service, "exemplo_relatorio.xlsx")
 
 if __name__ == '__main__':
     main() 

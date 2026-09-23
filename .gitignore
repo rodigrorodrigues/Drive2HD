@@ -57,3 +57,6 @@ $RECYCLE.BIN/
 # Arquivos de configuração local
 .env
 .env.local 
+test_backup_output/
+
+rclone.zip

@@ -45,7 +45,7 @@ echo 1. Execute: rclone config
 echo 2. Escolha: n (new remote)
 echo 3. Nome do remote: gdrive
 echo 4. Escolha: drive (Google Drive)
-echo 5. Escolha: n (não usar auto config)
+echo 5. Escolha: y (usar auto config)
 echo 6. Client ID: deixe vazio (Enter)
 echo 7. Client Secret: deixe vazio (Enter)
 echo 8. Escolha: y (sim, usar auto config)

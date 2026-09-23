@@ -39,7 +39,7 @@ Siga os passos:
 1. **Escolha `n`** (new remote)
 2. **Nome do remote:** `gdrive`
 3. **Escolha `drive`** (Google Drive)
-4. **Escolha `n`** (não usar auto config)
+4. **Escolha `y`** (usar auto config)
 5. **Client ID:** Deixe vazio (Enter)
 6. **Client Secret:** Deixe vazio (Enter)
 7. **Escolha `y`** (sim, usar auto config)

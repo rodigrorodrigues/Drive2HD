@@ -48,5 +48,6 @@ def check_folder_structure(path):
     print(f"   📂 Total de itens: {total_files + total_dirs}")
 
 if __name__ == '__main__':
-    path = r"C:\Users\Rodrigo Rodrigues\Documents\testehd"
-    check_folder_structure(path) 
+    import sys
+    target_path = sys.argv[1] if len(sys.argv) > 1 else os.getcwd()
+    check_folder_structure(target_path)

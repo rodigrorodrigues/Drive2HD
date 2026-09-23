@@ -93,12 +93,9 @@ def test_specific_files():
     
     # Arquivos que estão na raiz (baseado no check_structure.py)
     problem_files = [
-        "2025-06-12-Bioinsumos-SolloAgro-Treinmento-Nogueira.pptx",
-        "Alinhamento - Tutor - 2025_07_04 13_59 GMT-03_00 - Anotações do Gemini.docx",
-        "Cópia de Suporte retenção - CS 2025.xlsx",
-        "Indice de saúde do solo em SPD - Cherubin 2025.pptx",
-        "SIGLAS _ Inadimplencia.xlsx",
-        "Tutor _ Apresentação de Plataforma - Agro Para Todos - 2025_07_11 14_04 GMT-03_00 - Anotações do Gemini.docx"
+        "exemplo_apresentacao.pptx",
+        "exemplo_notas.docx",
+        "exemplo_planilha.xlsx"
     ]
     
     print(f"\nProcurando por {len(problem_files)} arquivos problemáticos...")

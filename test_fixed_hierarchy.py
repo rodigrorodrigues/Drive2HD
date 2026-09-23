@@ -100,9 +100,9 @@ def test_fixed_hierarchy():
     
     # Arquivos que deveriam estar em subpastas profundas
     test_files = [
-        "Cópia de Relatórios Agosto 25 ANALISTA FLAVIA.xlsx",
-        "teste2.mp4",
-        "arquivos videoteca.xlsx"
+        "exemplo_relatorio.xlsx",
+        "exemplo_video.mp4",
+        "exemplo_documento.docx"
     ]
     
     destination_path = "C:/test_backup_fixed"
